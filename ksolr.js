@@ -250,8 +250,9 @@ ksSolr.prototype.FormatSolrItems=function(data, sortBy)							// SHOW SOLR ITEMS
 
 ksSolr.prototype.SizeIIFImage=function(url, wid, rot)							// CREATE SIZED IIF IMAGE
 {
-	if (!url) 					return "";											// No url
-	if (!wid && !rot)			return url;											// Same old
+	if (!url) 							return "";									// No url
+	if (!wid && !rot)					return url;									// Same old
+	if (!url.match(/shanti-image/i))	return url;									// Not an IIF
 	var v=url.split("!");															// Chop
 	wid=(wid == "") ? v[1].match(/(\d+),/)[1]  : wid;								// Use wid if spec'd, otherise use what was there
 	rot=(rot == "") ? v[1].match(/\/(\d*)/)[1] : rot;								// Rot

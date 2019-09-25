@@ -8,7 +8,7 @@ CKEDITOR.dialog.add( 'ksolrdialog', function( editor ) {
 			id: 'dialogContent',
 			elements: [	{
                     type: 'html',
-                    html: '<iframe src="//viseyes.org/ksolr/ksolr.html" style="width:100%;height:640px;margin-top:-90px"></iframe>'
+                    html: '<iframe src="ksolr.html" style="width:100%;height:640px;margin-top:-90px"></iframe>'
                 	}],
 			}],
 		onLoad: function() {
@@ -43,9 +43,12 @@ CKEDITOR.dialog.add( 'ksolrdialog', function( editor ) {
 				if (src)															// If something
 					skEditor.insertHtml("<p>"+src+"</p>");							// Add string to text
 				}
+			else if (o.asset_type == "audio-video") {								// AV asset
+				skEditor.insertHtml("<iframe frameborder='0' scrolling='no' src='"+o.url_html+"' width='300'></iframe>");	// Add iframe to text
+				}
 			else{																	// Anthing else
 				if (o.url_thumb) 													// Use thumb 
-					skEditor.insertHtml("<iframe frameborder='0' scrolling='no' src='"+o.url_thumb+"' width='300'><iframe>");	// Add iframe to text
+					skEditor.insertHtml("<img src='"+o.url_thumb+"' width='300'>");	// Add thumbnail
 				}
 			}
 	}
